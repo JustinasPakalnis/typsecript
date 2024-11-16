@@ -162,7 +162,7 @@ function welcomePeople2(x: string[] | string) {
 console.log(welcomePeople2("asd"));
 
 welcomePeople2("yolo");
-welcomePeople2(["Yolo", "Fella", "Mista"]);
+welcomePeople2(["Should", "I  call you", "Mista"]);
 
 type Point = {
   x: number;
@@ -188,3 +188,73 @@ function printCoord3(pt: Pointer) {
 }
 
 printCoord3({ x: 110, y: 110 });
+
+interface Req {
+  url: string;
+  method: "GET" | "POST";
+}
+const req: Req = { url: "https://example.com", method: "GET" };
+function handleRequest(req: Req): void {
+  console.log(req);
+}
+handleRequest(req);
+
+function viens(params: number) {
+  console.log(params);
+  if (params >= 10) {
+    return params;
+  }
+  return viens(params + 1);
+}
+
+viens(1);
+
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+type Human = { swim?: () => void; fly?: () => void };
+
+function move(animal: Fish | Bird | Human) {
+  if ("swim" in animal) {
+    animal.swim?.();
+  } else {
+    animal.fly?.();
+  }
+}
+
+// Example usage:
+const fish: Fish = { swim: () => console.log("Fish is swimming") };
+const bird: Bird = { fly: () => console.log("Bird is flying") };
+const human: Human = { swim: () => console.log("Human is swimming") };
+
+move(fish); // Logs: "Fish is swimming"
+move(bird); // Logs: "Bird is flying"
+move(human);
+
+let z = Math.random() < 0.5 ? 10 : "hello world!";
+
+z = 1;
+
+console.log(z);
+
+z = "goodbye!";
+
+console.log(z);
+
+function example() {
+  let x: string | number | boolean = 0.3;
+
+  // x = Math.random() < 0.5;
+
+  // console.log(x);
+
+  if (Math.random() < 0.5) {
+    x = "hello";
+    console.log(x);
+  } else {
+    x = 100;
+    console.log(x);
+  }
+
+  return x;
+}
+example();
